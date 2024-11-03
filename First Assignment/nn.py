@@ -73,7 +73,7 @@ if __name__ == "__main__":
     nn = NeuralNetwork(8, 3, 8, 0.1)
     nn.paramsInit()
     X = np.eye(8)  # Identity matrix as input
-    Y = X  # Target values, identity matrix as output for this example
+    Y = X  # Target values
     Z1, A1, Z2, prediction = nn.feedForward(X)
     nn.backPropagation(X, Y, Z1, A1, Z2, prediction)
 
@@ -84,5 +84,5 @@ if __name__ == "__main__":
     plt.plot(range(epochs), loss_history)
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
-    plt.title('Loss Over Epochs')
+    plt.title('Loss over time (epochs)')
     plt.show()
