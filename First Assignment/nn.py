@@ -77,9 +77,10 @@ if __name__ == "__main__":
     Z1, A1, Z2, prediction = nn.feedForward(X)
     nn.backPropagation(X, Y, Z1, A1, Z2, prediction)
 
-    epochs = 100000
+    epochs = 10000
     loss_history, prediction, y = nn.train(X, Y, epochs)
 
+    np.set_printoptions(precision=2, suppress=True)
     print(prediction, y)
     plt.plot(range(epochs), loss_history)
     plt.xlabel('Epochs')
