@@ -37,10 +37,10 @@ class NeuralNetwork:
             self.weightsHiddenOutput = np.zeros((self.outputLayer, self.hiddenLayer))
        
         # Weights initialization for biases nodes in Input and Hidden Layer
-        if bias_init == "zero":
+        if bias_init == "random":
             self.biasHidden = np.random.rand(self.hiddenLayer, 1)
             self.biasOutput = np.random.rand(self.outputLayer, 1) 
-        elif bias_init == "random":
+        elif bias_init == "zero":
             self.biasHidden = np.zeros((self.hiddenLayer, 1))
             self.biasOutput = np.zeros((self.outputLayer, 1))
         elif bias_init == "high":
@@ -251,7 +251,7 @@ if __name__ == "__main__":
     #results = weight_initialization_experiment(nn, X, Y, init_methods, epochs, learningRate)
 
     # Experiment 3: bias initialization experiment
-    #bias_initializations = ["zero", "random", "high"]
+    #bias_initializations = ["random", "zero", "high"]
     #results = bias_initialization_experiment(nn, X, Y, bias_initializations, epochs, learningRate)
 
     # Experiment 4: noisy input
