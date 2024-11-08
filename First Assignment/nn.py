@@ -22,28 +22,28 @@ class NeuralNetwork:
 
         self.weightsInputHidden = None  # Weights from input layer to hidden layer
         self.weightsHiddenOutput = None # Weights from hidden to output layer
+        self.biasHidden = None # Bias from input to hidden layer
+        self.biasOutput = None # Bias from hidden to output layer
 
     def paramsInit(self, method = "uniform", bias_init = 'random'):
         '''
         Parameters initialization
         '''
-        if method == "uniform":
-            # Uniform random initialization (default)
+        if method == "uniform": # Uniform random initialization (default)
             self.weightsInputHidden = np.random.rand(self.hiddenLayer, self.inputLayer)
             self.weightsHiddenOutput = np.random.rand(self.outputLayer, self.hiddenLayer)
-        elif method == "zero":
-            # Zero initialization
+        elif method == "zero":  # Zero initialization
             self.weightsInputHidden = np.zeros((self.hiddenLayer, self.inputLayer))
             self.weightsHiddenOutput = np.zeros((self.outputLayer, self.hiddenLayer))
        
         # Weights initialization for biases nodes in Input and Hidden Layer
-        if bias_init == "random":
-            self.biasHidden = np.random.rand(self.hiddenLayer, 1)
+        if bias_init == "random": # Uniform random initialization (default)
+            self.biasHidden = np.random.rand(self.hiddenLayer, 1) 
             self.biasOutput = np.random.rand(self.outputLayer, 1) 
-        elif bias_init == "zero":
+        elif bias_init == "zero": # Zero bias initialization 
             self.biasHidden = np.zeros((self.hiddenLayer, 1))
             self.biasOutput = np.zeros((self.outputLayer, 1))
-        elif bias_init == "high":
+        elif bias_init == "high": # High bias initialization 
             self.biasHidden = np.ones((self.hiddenLayer, 1)) * 5  # High bias value (e.g., 5)
             self.biasOutput = np.ones((self.outputLayer, 1)) * 5  # High bias value (e.g., 5)
 
@@ -234,8 +234,8 @@ if __name__ == "__main__":
     
 
     np.set_printoptions(precision=2, suppress=True)
-    print(prediction, y)
-
+    print("Final Predictions for default parameters:\n", prediction)
+    print("Target:\n", Y)
     plt.plot(range(epochs), loss_history)
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
@@ -257,4 +257,3 @@ if __name__ == "__main__":
     # Experiment 4: noisy input
     #noise_levels = [0.0, 0.1, 0.3, 0.5]
     #results = noise_experiment(nn, X, Y, noise_levels, epochs, learningRate)
-
